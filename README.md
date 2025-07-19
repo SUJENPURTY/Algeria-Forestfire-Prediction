@@ -46,9 +46,9 @@ A smart and simple machine learning project to predict forest fires in Algeria u
 
 
  Optional Extras:
- Hyperparameter tuning
- Cross-validation
- Integration with weather APIs for real-time prediction
+ - Hyperparameter tuning
+ - Cross-validation
+ - Integration with weather APIs for real-time prediction
 
 
  
