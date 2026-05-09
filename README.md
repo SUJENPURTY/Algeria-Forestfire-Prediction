@@ -258,15 +258,14 @@ Below is a summary of cross-validated performance across all trained models.
   </tr>
   <tr>
     <td>
-      <img src="https://placehold.co/400x250/1a1a1a/FF5733?text=Home+Page" alt="Home Page" width="100%">
+      <img src="static/images/Home.png" alt="Home Page" width="100%">
     </td>
     <td>
-      <img src="https://placehold.co/400x250/1a1a1a/28a745?text=Prediction+Result" alt="Prediction Result" width="100%">
+      <img src="static/images/image.png" alt="Prediction Result" width="100%">
     </td>
   </tr>
 </table>
 
-*Replace the placeholders above with your actual application screenshots.*
 
 </div>
 
@@ -394,7 +393,7 @@ Contributions are what make the open-source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
+
 
 ## 🙏 Acknowledgements
 
@@ -403,20 +402,9 @@ Contributions are what make the open-source community such an amazing place to l
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [Canadian Forest Fire Weather Index (FWI)](https://cwfis.cfs.nrcan.gc.ca/background/summary/fwi)
 
----
-
-## 📧 Contact
-
-For questions, feedback, or collaboration opportunities, feel free to reach out!
-
-- **Email:** your.email@example.com
-- **LinkedIn:** [Your LinkedIn](https://linkedin.com/in/your-profile)
-- **Twitter:** [@YourTwitter](https://twitter.com/your-handle)
-
----
-
 <div align="center">
 
+  
 ### Star this repo if you found it helpful!
 
 **Made with ❤️ and 🔥 to protect Algeria's forests.**
