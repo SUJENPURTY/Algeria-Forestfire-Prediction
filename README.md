@@ -20,7 +20,13 @@
 
 <br/>
 
-<img src="https://images.unsplash.com/photo-1545121436-9c5925d81ac7?auto=format&fit=crop&w=1200&q=80" alt="Forest Fire Banner" width="700">
+<p align="center">
+  <img 
+    src="https://images.pexels.com/photos/266487/pexels-photo-266487.jpeg"
+    alt="Forest Fire Banner"
+    width="500"
+  />
+</p>
 
 ### Predicting Wildfires with Machine Learning to Protect Algeria's Forests
 
@@ -66,18 +72,19 @@ This project leverages historical data and advanced ML algorithms to build an **
 
 By analyzing key weather indicators like temperature, humidity, wind speed, and rainfall, our model identifies high-risk conditions **before** disaster strikes.
 
----
-
-## 🚀 Live Demo
 
 <div align="center">
 
-🔗 **[Click here to try the live demo](https://your-deployment-url.com)**  
-*Replace the link above with your deployed application URL (Heroku, Render, AWS, etc.)*
+<a href="https://algeria-forestfire-prediction.onrender.com" target="_blank">
+  <img src="https://img.shields.io/badge/🔥%20Click%20Here-Try%20Live%20Demo-ff6b00?style=for-the-badge&logo=google-chrome&logoColor=white" />
+</a>
+
+<br>
+
+<sub> AI Powered Forest Fire Prediction System</sub>
 
 </div>
 
----
 
 ## ⭐ Key Features
 
