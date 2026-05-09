@@ -1,1 +1,183 @@
-<h1>Welcome to My Home page Guys</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireAI — AI Forest Fire Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="/" class="brand">
+                    <div class="brand-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <div class="brand-name">Fire<span>AI</span></div>
+                </a>
+                <div class="nav-actions">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="/predict" class="nav-cta">Start Prediction</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <span class="dot"></span>
+                        AI-Powered Wildfire Detection
+                    </div>
+                    <h1 class="hero-title">
+                        Intelligent<br>
+                        <span class="accent">Forest Fire</span><br>
+                        Prediction
+                    </h1>
+                    <p class="hero-subtitle">
+                        Leverage advanced machine learning models trained on Algerian forest data to detect wildfire risks with high accuracy and speed.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="/predict" class="btn btn-accent">
+                            <i class="fa-solid fa-rocket"></i>
+                            Start Predicting
+                        </a>
+                        <a href="#features" class="btn btn-ghost">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="hero-dashboard">
+                        <div class="dashboard-top">
+                            <div class="dashboard-title">
+                                <i class="fa-solid fa-chart-line"></i>
+                                Live Risk Monitor
+                            </div>
+                            <div class="dashboard-status">
+                                <div class="dot"></div>
+                                System Online
+                            </div>
+                        </div>
+                        <div class="dashboard-stats">
+                            <div class="stat-box">
+                                <span class="stat-value danger">89%</span>
+                                <span class="stat-label">Risk Level</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">18</span>
+                                <span class="stat-label">Active Zones</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value warn">7</span>
+                                <span class="stat-label">High Alerts</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-chart">
+                            <div class="chart-bar" style="height:62%"></div>
+                            <div class="chart-bar" style="height:38%"></div>
+                            <div class="chart-bar" style="height:75%"></div>
+                            <div class="chart-bar" style="height:50%"></div>
+                            <div class="chart-bar" style="height:88%"></div>
+                            <div class="chart-bar" style="height:42%"></div>
+                            <div class="chart-bar" style="height:68%"></div>
+                            <div class="chart-bar" style="height:35%"></div>
+                        </div>
+                        <div class="dashboard-footer">
+                            <span class="dashboard-footer-text">Last updated: Just now</span>
+                            <a href="/predict" class="dashboard-footer-link">
+                                Analyze Now <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-eyebrow">
+                <i class="fa-solid fa-shield-halved"></i>
+                Capabilities
+            </div>
+            <h2 class="section-title">Built for Modern Wildfire Intelligence</h2>
+            <p class="section-desc">
+                Combines the FWI system with machine learning to deliver precise, real-time wildfire risk assessments for forest management professionals.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="feature-title">ML Classification</h3>
+                    <p class="feature-text">Trained classification models distinguish fire-risk conditions with high precision across diverse datasets.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 class="feature-title">Instant Analysis</h3>
+                    <p class="feature-text">Receive predictions in milliseconds based on weather, FWI indices, and regional parameters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <h3 class="feature-title">FWI Integration</h3>
+                    <p class="feature-text">Full support for FFMC, DMC, DC, ISI, BUI, and FWI indices derived from the Canadian fire weather system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3 class="feature-title">Data-Driven</h3>
+                    <p class="feature-text">Models trained on real-world Algerian forest fire observations for region-specific accuracy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3 class="feature-title">Multi-Region</h3>
+                    <p class="feature-text">Supports prediction across multiple Algerian forest regions with regional adaptation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h3 class="feature-title">Responsive UI</h3>
+                    <p class="feature-text">Premium web interface accessible on any device, designed for professional use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box reveal-item">
+                <h2 class="cta-title">Ready to Detect Wildfire Risk?</h2>
+                <p class="cta-text">
+                    Enter your environmental parameters and get an AI-powered fire risk assessment instantly.
+                </p>
+                <a href="/predict" class="btn btn-accent">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                    Launch Prediction Tool
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bar">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-brand-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    FireAI
+                </div>
+                <span class="footer-copy">2024 Algeria Forest Fire Prediction System</span>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

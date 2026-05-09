@@ -3,6 +3,5 @@ numpy
 matplotlib
 seaborn
 Flask
-scikit-learn
-
+scikit-learn==1.6.1
 #-e .
