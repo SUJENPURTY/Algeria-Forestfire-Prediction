@@ -1,83 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initParticles();
+    initStarfield();
     initNavbar();
     initReveal();
     initForm();
+    initBars();
 });
 
-function initParticles() {
+function initStarfield() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     let stars = [];
-    let frameId;
 
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
 
-    function createStar() {
+    function makeStar() {
         return {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 1.4 + 0.3,
-            opacity: Math.random() * 0.5 + 0.1,
-            speed: Math.random() * 0.15 + 0.02,
-            color: Math.random() > 0.8 ? '249, 115, 22' : '255, 255, 255'
+            r: Math.random() * 1.5 + 0.4,
+            a: Math.random() * 0.5 + 0.1,
+            v: Math.random() * 0.1 + 0.02,
+            c: Math.random() > 0.85 ? '249,115,22' : '255,255,255'
         };
     }
 
-    function initStars() {
-        const n = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 100);
-        stars = Array.from({ length: n }, createStar);
+    function init() {
+        const n = Math.min(Math.floor((canvas.width * canvas.height) / 14000), 110);
+        stars = Array.from({ length: n }, makeStar);
     }
 
     function drawStar(s) {
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${s.color}, ${s.opacity})`;
+        ctx.fillStyle = `rgba(${s.c}, ${s.a})`;
         ctx.fill();
     }
 
-    function drawLink(s1, s2) {
+    function drawLine(s1, s2) {
         const dx = s1.x - s2.x;
         const dy = s1.y - s2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 130) {
+        if (dist < 140) {
             ctx.beginPath();
             ctx.moveTo(s1.x, s1.y);
             ctx.lineTo(s2.x, s2.y);
-            ctx.strokeStyle = `rgba(249, 115, 22, ${0.06 * (1 - dist / 130)})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `rgba(249,115,22,${0.05 * (1 - dist / 140)})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
         }
     }
 
     function tick() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < stars.length; i++) {
-            drawStar(stars[i]);
-            for (let j = i + 1; j < stars.length; j++) {
-                drawLink(stars[i], stars[j]);
-            }
-            stars[i].y += stars[i].speed;
-            if (stars[i].y > canvas.height) {
-                stars[i].y = 0;
-                stars[i].x = Math.random() * canvas.width;
+        for (const s of stars) {
+            drawStar(s);
+            s.y += s.v;
+            if (s.y > canvas.height) {
+                s.y = 0;
+                s.x = Math.random() * canvas.width;
             }
         }
-        frameId = requestAnimationFrame(tick);
+        for (let i = 0; i < stars.length; i++) {
+            for (let j = i + 1; j < stars.length; j++) {
+                drawLine(stars[i], stars[j]);
+            }
+        }
+        requestAnimationFrame(tick);
     }
 
     resize();
-    initStars();
+    init();
     tick();
 
     window.addEventListener('resize', () => {
         resize();
-        initStars();
+        init();
     });
 }
 
@@ -90,7 +92,7 @@ function initNavbar() {
 }
 
 function initReveal() {
-    const items = document.querySelectorAll('.feature-card, .reveal-item');
+    const items = document.querySelectorAll('.feature-card, .reveal');
     if (!items.length) return;
 
     const observer = new IntersectionObserver((entries) => {
@@ -100,7 +102,7 @@ function initReveal() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
     items.forEach(el => observer.observe(el));
 }
@@ -114,7 +116,7 @@ function initForm() {
         input.addEventListener('blur', () => checkField(input));
         input.addEventListener('input', () => {
             const group = input.closest('.field-group');
-            if (group.classList.contains('has-error')) checkField(input);
+            if (group.classList.contains('has-err')) checkField(input);
         });
     });
 
@@ -131,36 +133,32 @@ function checkField(input) {
     const group = input.closest('.field-group');
     const val = input.value.trim();
 
-    group.classList.remove('has-error');
-    input.classList.remove('field-error');
+    group.classList.remove('has-err');
+    input.classList.remove('err');
 
     if (input.dataset.req === '1' && !val) {
-        group.classList.add('has-error');
-        input.classList.add('field-error');
+        group.classList.add('has-err');
+        input.classList.add('err');
         return false;
     }
     if (val && input.dataset.num === '1') {
         if (isNaN(parseFloat(val))) {
-            group.classList.add('has-error');
-            input.classList.add('field-error');
+            group.classList.add('has-err');
+            input.classList.add('err');
             return false;
         }
     }
     return true;
 }
 
-function animateBars() {
-    const bars = document.querySelectorAll('.chart-bar');
+function initBars() {
+    const bars = document.querySelectorAll('.bar');
     if (!bars.length) return;
-    const heights = [62, 38, 75, 50, 88, 42, 68, 35, 80];
+    const heights = [62, 38, 75, 50, 88, 42, 68, 35];
     bars.forEach((bar, i) => {
         bar.style.height = '0px';
         setTimeout(() => {
             bar.style.height = heights[i] + '%';
-        }, i * 80);
+        }, i * 70 + 600);
     });
-}
-
-if (document.querySelector('.chart-bar')) {
-    animateBars();
 }

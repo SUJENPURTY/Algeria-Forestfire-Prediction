@@ -12,7 +12,7 @@
 
     <div id="loading-overlay" class="loading-cover">
         <div class="loading-ring"></div>
-        <div class="loading-label">Analyzing environmental data...</div>
+        <div class="loading-text">Analyzing environmental data...</div>
     </div>
 
     <nav class="navbar">
@@ -35,8 +35,8 @@
             <div class="predict-grid">
 
                 <div class="info-card">
-                    <h2 class="info-card-title">Fire Risk Analysis</h2>
-                    <p class="info-card-subtitle">
+                    <h2 class="info-title">Fire Risk Analysis</h2>
+                    <p class="info-desc">
                         Input environmental and weather metrics to receive an AI-powered wildfire risk assessment. Results are based on the Canadian FWI system.
                     </p>
                     <ul class="info-list">
@@ -76,16 +76,16 @@
                 </div>
 
                 <div class="form-card">
-                    <div class="form-card-header">
-                        <div class="form-card-icon">
+                    <div class="form-header">
+                        <div class="form-icon">
                             <i class="fa-solid fa-fire-flame-curved"></i>
                         </div>
-                        <h2 class="form-card-title">Enter Prediction Data</h2>
-                        <p class="form-card-subtitle">All 12 parameters required</p>
+                        <h2 class="form-title">Enter Prediction Data</h2>
+                        <p class="form-subtitle">All 12 parameters required</p>
                     </div>
 
                     <form id="predict-form" method="POST" action="/predict">
-                        <div class="inputs-grid">
+                        <div class="form-grid">
 
                             <div class="field-group">
                                 <label class="field-label" for="Temperature">Temperature</label>
@@ -93,7 +93,7 @@
                                     placeholder="e.g. 32.5" data-req="1" data-num="1"
                                     value="{{ values.Temperature if values else '' }}">
                                 <span class="field-hint">Temperature in Celsius</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.Temperature %}{{ errors.Temperature }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -104,7 +104,7 @@
                                     placeholder="e.g. 45.0" data-req="1" data-num="1"
                                     value="{{ values.RH if values else '' }}">
                                 <span class="field-hint">RH percentage</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.RH %}{{ errors.RH }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -115,7 +115,7 @@
                                     placeholder="e.g. 18.5" data-req="1" data-num="1"
                                     value="{{ values.Ws if values else '' }}">
                                 <span class="field-hint">Wind speed in km/h</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.Ws %}{{ errors.Ws }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -126,7 +126,7 @@
                                     placeholder="e.g. 0.0" data-req="1" data-num="1"
                                     value="{{ values.Rain if values else '' }}">
                                 <span class="field-hint">Rainfall in mm</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.Rain %}{{ errors.Rain }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -137,7 +137,7 @@
                                     placeholder="e.g. 86.2" data-req="1" data-num="1"
                                     value="{{ values.FFMC if values else '' }}">
                                 <span class="field-hint">Fine Fuel Moisture Code</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.FFMC %}{{ errors.FFMC }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -148,7 +148,7 @@
                                     placeholder="e.g. 26.6" data-req="1" data-num="1"
                                     value="{{ values.DMC if values else '' }}">
                                 <span class="field-hint">Duff Moisture Code</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.DMC %}{{ errors.DMC }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -159,7 +159,7 @@
                                     placeholder="e.g. 94.5" data-req="1" data-num="1"
                                     value="{{ values.DC if values else '' }}">
                                 <span class="field-hint">Drought Code</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.DC %}{{ errors.DC }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -170,7 +170,7 @@
                                     placeholder="e.g. 5.5" data-req="1" data-num="1"
                                     value="{{ values.ISI if values else '' }}">
                                 <span class="field-hint">Initial Spread Index</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.ISI %}{{ errors.ISI }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -181,7 +181,7 @@
                                     placeholder="e.g. 42.1" data-req="1" data-num="1"
                                     value="{{ values.BUI if values else '' }}">
                                 <span class="field-hint">Buildup Index</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.BUI %}{{ errors.BUI }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -192,7 +192,7 @@
                                     placeholder="e.g. 12.4" data-req="1" data-num="1"
                                     value="{{ values.FWI if values else '' }}">
                                 <span class="field-hint">Fire Weather Index</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.FWI %}{{ errors.FWI }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -203,7 +203,7 @@
                                     placeholder="0 or 1" data-req="1" data-num="1"
                                     value="{{ values.Classes if values else '' }}">
                                 <span class="field-hint">0 = Not Fire, 1 = Fire</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.Classes %}{{ errors.Classes }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -214,7 +214,7 @@
                                     placeholder="0 or 1" data-req="1" data-num="1"
                                     value="{{ values.Region if values else '' }}">
                                 <span class="field-hint">0 = Bejaia, 1 = Sidi-Bel</span>
-                                <span class="field-error-msg">
+                                <span class="field-err">
                                     {% if errors and errors.Region %}{{ errors.Region }}{% else %}Required{% endif %}
                                 </span>
                             </div>
@@ -229,28 +229,28 @@
 
                     {% if result %}
                         {% if result_type == 'fire' %}
-                    <div class="result-card fire-result show-result">
+                    <div class="result-box fire show">
                         <span class="result-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
                         <span class="result-label">{{ result }}</span>
-                        <span class="result-text">High wildfire risk conditions detected. Immediate precautions recommended.</span>
+                        <span class="result-sub">High wildfire risk conditions detected. Immediate precautions recommended.</span>
                     </div>
                         {% elif result_type == 'safe' %}
-                    <div class="result-card safe-result show-result">
+                    <div class="result-box safe show">
                         <span class="result-icon"><i class="fa-solid fa-shield-halved"></i></span>
                         <span class="result-label">{{ result }}</span>
-                        <span class="result-text">Low fire risk conditions. Continue regular monitoring.</span>
+                        <span class="result-sub">Low fire risk conditions. Continue regular monitoring.</span>
                     </div>
                         {% else %}
-                    <div class="result-card general-result show-result">
+                    <div class="result-box general show">
                         <span class="result-icon"><i class="fa-solid fa-circle-info"></i></span>
                         <span class="result-label">{{ result }}</span>
-                        <span class="result-text">Analysis complete. Review output above for details.</span>
+                        <span class="result-sub">Analysis complete. Review output above for details.</span>
                     </div>
                         {% endif %}
                     {% endif %}
 
                     {% if errors and errors.general %}
-                    <div class="error-banner show">
+                    <div class="error-box show">
                         <i class="fa-solid fa-circle-exclamation"></i>
                         <span>{{ errors.general }}</span>
                     </div>
@@ -261,14 +261,14 @@
         </div>
     </section>
 
-    <footer class="footer-bar">
+    <footer class="footer">
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
                     <div class="footer-brand-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
                     FireAI
                 </div>
-                <span class="footer-copy">2024 Algeria Forest Fire Prediction System</span>
+                <span class="footer-copy">2024 Algeria Forest Fire Prediction</span>
                 <div class="footer-links">
                     <a href="/" class="footer-link">Home</a>
                     <a href="/predict" class="footer-link">Predict</a>
